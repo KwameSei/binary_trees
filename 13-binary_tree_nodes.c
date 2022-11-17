@@ -3,10 +3,10 @@
 #include <stdlib.h>
 
 /**
- * binary_tree_leaves - number of leaves in a binary tree
+ * binary_tree_nodes - number of leaves in a binary tree
  * @tree: pointer to the node
  *
- * Return: size
+ * Return: nodes
  */
 
 size_t binary_tree_nodes(const binary_tree_t *tree)
@@ -26,7 +26,7 @@ size_t binary_tree_nodes(const binary_tree_t *tree)
 
 		if (tree->right)
 			nodes += binary_tree_nodes(tree->right);
-		
+
 		if (tree->left)
 			nodes += binary_tree_nodes(tree->left);
 	}
