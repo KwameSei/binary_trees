@@ -1,26 +1,34 @@
 #include "binary_trees.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+
 /**
- * binary_tree_nodes - sums up nodes in the tree
- * @tree: the entirely binary tree
+ * binary_tree_leaves - number of leaves in a binary tree
+ * @tree: pointer to the node
  *
- * Return: nodes
+ * Return: size
  */
 
 size_t binary_tree_nodes(const binary_tree_t *tree)
 {
 	size_t nodes = 0;
 
-	if (!tree || (!tree->left && !tree->right))
+	if (tree)
 	{
-		return (0);
+/*
+*		l_size = tree->left ? binary_tree_size(tree->left) : 0;
+*		r_size = tree->right ? binary_tree_size(tree->right) : 0;
+*/
+		if (tree->left || tree->right)
+			nodes += 1;
+		else
+			nodes += 0;
+
+		if (tree->right)
+			nodes += binary_tree_nodes(tree->right);
+		
+		if (tree->left)
+			nodes += binary_tree_nodes(tree->left);
 	}
-	else
-	{
-		node += 1;
-		node += binary_tree_nodes(tree->left);
-		node += binary_tree_nodes(tree->right);
-		return (node);
-	}
+	return (nodes);
 }
